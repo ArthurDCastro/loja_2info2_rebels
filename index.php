@@ -1,3 +1,12 @@
+<?php
+
+    require_once "app/models/CrudProdutos.php";
+    $crud = new CrudProdutos();
+
+    $listaProdutos = $crud->getProdutos();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +31,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/imagens/logo.png" alt="" width="50px">Rebels</a>
+        <a class="navbar-brand" href="#"><img src="assets/imagens/logo.png" alt="" width="70px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,10 +41,7 @@
                     <a class="nav-link" href="#">Início</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contato</a>
+                    <a class="nav-link" href="app/views/admin/produtos.php">Área do admin</a>
                 </li>
             </ul>
         </div>
@@ -57,19 +63,33 @@
     <!-- Page Features -->
     <div class="row text-center">
 
+            <?php foreach($listaProdutos as $prod): ?>
+
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
                     <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                     <div class="card-body">
-                        <h4 class="card-title">Título</h4>
-                        <p class="card-text">00.00</p>
+                        <h4 class="card-title"><?= $prod['nome'] ?></h4>
+                        <p class="card-text"><?= $prod['preco'] ?></p>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                     </div>
+                    <?php if ($prod['qtd_estoque'] > 0): ?>
+                        <div class="alert alert-success" role="alert">
+                            Disponível
+                        </div>
+                    <?php else: ?>
+                        <div class="alert alert-danger" role="alert">
+                            Indisponível
+                        </div>
+                    <?php endif; ?>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-ifc">veja +</a>
+                        <a href="app/views/produto.php?codigo=<?= $prod['id'] ?>" class="btn btn-ifc">veja +</a>
                     </div>
+
                 </div>
             </div>
+
+            <?php endforeach; ?>
 
     </div>
     <!-- /.row -->
