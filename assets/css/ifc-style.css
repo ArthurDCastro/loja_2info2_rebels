@@ -8,6 +8,10 @@ body {
   }
 }
 
+.product-content{
+  margin-top: 550px;
+}
+
 .card {
   height: 100%;
 }
@@ -49,4 +53,22 @@ background: url("../imagens/bg.jpg") no-repeat;
 background-position: center right;
 
 filter: blur(3px);
+}
+
+.center {
+  text-align: center;
+}
+
+.merge-bottom-input {
+  width: 67px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.merge-top-left-button {
+  border-top-left-radius: 0;
+}
+
+.merge-top-right-button {
+  border-top-right-radius: 0;
 }

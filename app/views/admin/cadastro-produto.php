@@ -8,10 +8,10 @@
 <!-- Use o controladorProduto.php para encaminhar os dados do seu cadastro -->
 
 <h2>Cadastro de Produtos</h2>
-<form action="#" method="post">
+<form action="../../controllers/controladorProduto.php?produto=cadastrar" method="post">
     <div class="form-group">
         <label for="produto">Produto:</label>
-        <input name="titulo" type="text" class="form-control" id="produto" aria-describedby="nome produto" placeholder="">
+        <input name="nome" type="text" class="form-control" id="produto" aria-describedby="nome produto" placeholder="">
     </div>
 
     <div class="form-group">

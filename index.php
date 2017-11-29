@@ -73,7 +73,7 @@
                         <p class="card-text"><?= $prod['preco'] ?></p>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                     </div>
-                    <?php if ($prod['qtd_estoque'] > 0): ?>
+                    <?php if ($prod['qtd'] > 0): ?>
                         <div class="alert alert-success" role="alert">
                             Disponível
                         </div>

@@ -38,9 +38,10 @@
         <th scope="row"><?= $produto['id'] ?></th>
         <td><?= $produto['nome'] ?></td>
         <td><?= $produto['preco'] ?></td>
-        <td><?= $produto['nome'] ?></td>
+        <td><?= $produto['qtd'] ?></td>
         <td><?= $produto['categoria'] ?></td>
-        <td>##editar | remover</td>
+        <td><a href="../../controllers/controladorProduto.php?produto=excluir&id=<?= $produto['id'] ?>">Excluir</a> | <a
+                    href="../../controllers/controladorProduto.php?produto=editar&id=<?= $produto['id'] ?>">Editar</a></td>
     </tr>
    <?php endforeach; ?>
 

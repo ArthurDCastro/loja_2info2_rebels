@@ -10,13 +10,13 @@ require_once "Conexao.php";
 
 class Produto {
 
-    public $codigo;
+    public $quantidade;
     public $nome;
     public $preco;
     public $categoria;
 
-    public function __construct($codigo, $nome, $preco, $categoria){
-        $this->codigo = $codigo;
+    public function __construct($nome, $preco, $quantidade, $categoria){
+        $this->quantidade = $quantidade;
         $this->nome = $nome;
         $this->preco = $preco;
         $this->categoria = $categoria;
