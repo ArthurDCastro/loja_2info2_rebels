@@ -15,35 +15,6 @@
     <link href="../../../assets/css/ifc-style.css" rel="stylesheet">
 
     <!-- ## MOVA ESTE CSS PARA O ARQUIVO ifc-styles.css-->
-    <style>
-        .admin-menu {
-            background: #333;
-        }
-
-        ul {
-            margin: 0;
-            padding: 0;
-        }
-        ul li {
-            padding: 0 ;
-            list-style: none;
-
-        }
-
-        ul li a {
-            display: block;
-            padding: 10px 10px;
-
-            color: #b8c7ce;
-            font-size: 12px;
-        }
-        ul li a:hover {
-            text-decoration: none;
-            background: #1d1c1c;
-            color: #b8c7ce;
-        }
-    </style>
-
 </head>
 
 <body>

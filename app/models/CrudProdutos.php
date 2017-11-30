@@ -30,6 +30,12 @@ class CrudProdutos {
         $this->conexao->exec($sql);
     }
 
+    public function editar(array $lista){
+        $sql = "UPDATE tb_produtos SET nome = '{$lista['nome']}', preco = {$lista['preco']}, categoria = '{$lista['categoria']}', qtd = {$lista['qtd']} WHERE id = {$lista['id']}";
+
+        $this->conexao->exec($sql);
+    }
+
     public function buscarProduto($codigo){
         $consulta = $this->conexao->query("SELECT * FROM tb_produtos WHERE id = {$codigo}");
         $produto = $consulta->fetch(PDO::FETCH_ASSOC);

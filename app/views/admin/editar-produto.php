@@ -7,12 +7,14 @@
 
     $produto = $_SESSION['produto'];
 
+
+
 ?>
 <h2>Editar Produtos</h2>
-<form action="" method="post">
+<form action="../../controllers/controladorProduto.php?produto=editar&editado=1&id=<?= $produto['id'] ?>" method="post">
     <div class="form-group">
         <label for="produto">Produto:</label>
-        <input name="titulo" type="text" class="form-control" id="produto" aria-describedby="nome produto" placeholder="" value="<?= $produto['nome'] ?>">
+        <input name="nome" type="text" class="form-control" id="produto" aria-describedby="nome produto" placeholder="" value="<?= $produto['nome'] ?>">
     </div>
 
     <div class="form-group">
@@ -22,7 +24,7 @@
 
     <div class="form-group">
         <label for="quantidade">Quantidade</label>
-        <input name="quantidade" type="number" class="form-control" id="quantidade" placeholder="" value="<?= $produto['qtd'] ?>">
+        <input name="qtd" type="number" class="form-control" id="quantidade" placeholder="" value="<?= $produto['qtd'] ?>">
     </div>
 
     <div class="form-group">
@@ -40,5 +42,6 @@
 <?php
 
 require_once "rodape.php";
+session_destroy();
 
 ?>

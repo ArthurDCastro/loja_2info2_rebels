@@ -3,7 +3,10 @@
     require_once __DIR__."/../../models/CrudProdutos.php";
     $crud = new CrudProdutos();
 
-    $listaProdutos = $crud->getProdutos();
+    if (!isset($listaProdutos)) {
+        $listaProdutos = $crud->getProdutos();
+    }
+
 
     ## !!ADICIONE AQUI O CABECALHO DA PAGINA
     require_once "cabecalho.php";
@@ -13,10 +16,12 @@
 <!--Barra de busca-->
 <div class="row">
     <div class="col-md-12">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="digite o nome do produto" aria-describedby="basic-addon2">
-            <button class="input-group-addon" id="basic-addon2">buscar</button>
-        </div>
+        <form action="produtos.php?produto=buscar" method="post">
+            <div class="input-group">
+                <input name="nome" type="text" class="form-control" placeholder="digite o nome do produto" aria-describedby="basic-addon2">
+                <button class="input-group-addon" id="basic-addon2">buscar</button>
+            </div>
+        </form>
     </div>
 </div>
 <br>
