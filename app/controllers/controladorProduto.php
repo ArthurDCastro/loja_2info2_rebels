@@ -48,6 +48,7 @@ if ( $_GET['produto'] == 'editar'){
 
         $crud->editar($editado);
 
+        session_destroy();
         header("Location: ../views/admin/produtos.php");
     }
 
@@ -67,60 +68,3 @@ if ($_GET['produto'] == 'excluir'){
 
 }
 
-if ($_GET['produto'] == 'buscar'){
-
-    $crud = new CrudProdutos();
-
-    $meusContatos = $crud->getProdutos();
-
-    $contatos = [];
-
-    $countBusca = strlen($_POST['busca']);
-
-    foreach ($meusContatos as $contato) {
-
-        $countContato = strlen($contato["nome"]);
-
-        $j = $countContato;
-
-        $verificaId = true;
-
-        for ($i = $countBusca; $i > 1; $i--){
-
-            $cont = str_split($contato["nome"], $j)[0];
-
-            $letra = str_split($_POST['busca'], $i)[0];
-
-            if (strtolower(str_replace(" ", "", $letra)) == strtolower(str_replace(" ", "", $cont))){
-                foreach ($contatos as $contatosBuscados){
-                    if ($contatosBuscados["id"] == $contato["id"]){
-
-                        $verificaId = false;
-
-                        break;
-
-                    }
-                }
-
-                if ($verificaId){
-
-                    $contatos[] = $contato;
-
-                    break;
-                }
-            }
-            if ($countBusca >= $countContato){
-                if ($i <= $j and $j > 1){
-
-                    $j--;
-                }
-            } elseif ($countBusca < $countContato and $i < $j){
-
-                $i = $countBusca;
-
-                $j--;
-            }
-        }
-    }
-    $meusProdutos = $contatos;
-}

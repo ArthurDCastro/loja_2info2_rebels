@@ -2,6 +2,10 @@
 <?php
 
     require_once "cabecalho.php";
+    require_once __DIR__."/../../models/CrudProdutos.php";
+
+    $crud = new CrudProdutos();
+    $categorias = $crud->getCategorias();
 
 ?>
 
@@ -27,9 +31,9 @@
     <div class="form-group">
         <label for="Categoria">Categoria</label>
         <select name="categoria" class="form-control" id="Categoria">
-            <option>Fruta</option>
-            <option>Legume</option>
-            <option>Hortaliça</option>
+            <?php foreach ($categorias as $cat): ?>
+                <option><?= $cat ?></option>
+            <?php endforeach; ?>
         </select>
     </div>
 

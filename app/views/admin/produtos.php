@@ -3,13 +3,18 @@
     require_once __DIR__."/../../models/CrudProdutos.php";
     $crud = new CrudProdutos();
 
-    if (!isset($listaProdutos)) {
-        $listaProdutos = $crud->getProdutos();
-    }
+    $listaProdutos = $crud->getProdutos();
+
 
 
     ## !!ADICIONE AQUI O CABECALHO DA PAGINA
     require_once "cabecalho.php";
+
+    if ($_GET['produto'] == 'buscar'){
+
+        $listaProdutos = $crud->buscarProdutos($_POST['busca']);
+
+    }
 
 ?>
 
@@ -18,8 +23,11 @@
     <div class="col-md-12">
         <form action="produtos.php?produto=buscar" method="post">
             <div class="input-group">
-                <input name="nome" type="text" class="form-control" placeholder="digite o nome do produto" aria-describedby="basic-addon2">
-                <button class="input-group-addon" id="basic-addon2">buscar</button>
+                <input name="busca" type="text" class="form-control" placeholder="digite o nome do produto" aria-describedby="basic-addon2">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="produtos.php" class="btn btn-danger" id="basic-addon2">Limpar</a>
+                    <button class="btn btn-primary" id="basic-addon2">Buscar</button>
+                </div>
             </div>
         </form>
     </div>

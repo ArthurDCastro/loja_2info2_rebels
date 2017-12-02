@@ -1,12 +1,19 @@
 ﻿<!-- ## !!ADICIONE O CABECALHO E O RODAPE PARA A PAGINA -->
 <?php
 
-    require_once "cabecalho.php";
-
     session_start();
-
     $produto = $_SESSION['produto'];
 
+
+    require_once "cabecalho.php";
+    require_once __DIR__."/../../models/CrudProdutos.php";
+
+
+
+
+
+    $crud = new CrudProdutos();
+    $categorias = $crud->getCategorias();
 
 
 ?>
@@ -30,9 +37,16 @@
     <div class="form-group">
         <label for="Categoria">Categoria</label>
         <select name="categoria" class="form-control" id="Categoria">
-            <option>Fruta</option>
-            <option>Legume</option>
-            <option>Hortaliça</option>
+            <option><?= $produto['categoria'] ?></option>
+            <?php
+                foreach ($categorias as $cat):
+                if ($cat != $produto['categoria']):
+            ?>
+                    <option><?= $cat ?></option>
+            <?php
+                endif;
+                endforeach;
+            ?>
         </select>
     </div>
 
@@ -42,6 +56,5 @@
 <?php
 
 require_once "rodape.php";
-session_destroy();
 
 ?>
