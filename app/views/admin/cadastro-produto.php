@@ -31,6 +31,7 @@
     <div class="form-group">
         <label for="Categoria">Categoria</label>
         <select name="categoria" class="form-control" id="Categoria">
+            <option>...</option>
             <?php foreach ($categorias as $cat): ?>
                 <option><?= $cat ?></option>
             <?php endforeach; ?>

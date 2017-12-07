@@ -103,17 +103,15 @@
             <!-- end row -->
 
             <div class="row add-to-cart">
-                <div class="col-sm-2 product-qty">
-                    <label>First</label> <!-- purely semantic -->
-                    <div class="form-control input-sm center merge-bottom-input" name="first">0</div>
-
-                    <div class="btn-group btn-block" role="group" aria-label="plus-minus">
-                        <button type="button" class="btn btn-sm btn-danger minus-button merge-top-left-button" disabled="disabled"><span class="glyphicon glyphicon-minus"></span></button>
-                        <button type="button" class="btn btn-sm btn-success plus-button merge-top-right-button"><span class="glyphicon glyphicon-plus"></span></button>
-                    </div><!-- end button group -->
+                <div class="col-md-5 product-qty">
+                    <form action="../controllers/controladorProduto.php?produto=vender&id=<?= $produto['id']; ?>" method="post">
+                        <input class="btn btn-default btn-lg btn-qty" name="qtd" value="1" />
+                        <button type="submit" class="btn btn-lg btn-brand btn-full-width" <?php if ($produto['qtd'] < 0):?> disabled <?php endif;?>>
+                            Comprar
+                        </button>
+                    </form>
                 </div>
             </div><!-- end row -->
-
         </div>
 
     </div>
@@ -129,52 +127,6 @@
     </div>
     <!-- /.container -->
 </footer>
-
-<script>
-    $(document).ready(function(){
-
-        $('.minus-button').click( function(e){
-
-        // change this to whatever minimum you'd like
-        const minValue = 0;
-
-        const currentInput = $(e.currentTarget).parent().prev()[0];
-
-        let minusInputValue = $(currentInput).html();
-
-            if (minusInputValue > minValue) {
-                minusInputValue --;
-                $($(e.currentTarget).next()).removeAttr('disabled');
-                $(currentInput).html(minusInputValue);
-
-                if (minusInputValue <= minValue) {
-                    $(e.currentTarget).attr('disabled', 'disabled');
-                }
-            }
-        }
-        );
-
-        $('.plus-button').click( function(e) {
-
-            const maxValue = 10;
-
-            const currentInput = $(e.currentTarget).parent().prev()[0];
-
-            let plusInputValue = $(currentInput).html();
-
-            if (plusInputValue < maxValue) {
-                plusInputValue ++;
-                $($(e.currentTarget).prev()[0]).removeAttr('disabled');
-                $(currentInput).html(plusInputValue);
-
-                if (plusInputValue >= maxValue) {
-                    $(e.currentTarget).attr('disabled', 'disabled');
-                }
-            }
-        }
-        );
-    };
-</script>
 
 </body>
 

@@ -68,3 +68,14 @@ if ($_GET['produto'] == 'excluir'){
 
 }
 
+if ($_GET['produto'] == 'vender'){
+
+    //algoritmo para excluir
+    $crud = new CrudProdutos();
+    $crud->vendeProduto($_POST['qtd'],$_GET['id']);
+
+    print_r([$_POST['qtd'],$_GET['id']]);
+
+    //redirecione para a página de produtos
+    header("Location: ../../index.php");
+}

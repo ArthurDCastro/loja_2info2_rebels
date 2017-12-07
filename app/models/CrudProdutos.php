@@ -118,4 +118,17 @@ class CrudProdutos {
 
         return  $listaCat;
     }
+
+    public function vendeProduto($qtd, $id){
+        $consulta = $this->conexao->query("select qtd from tb_produtos where id = {$id};");
+        $qtd_bd = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+        $qtd = $qtd_bd[0]['qtd'] - $qtd;
+
+
+        $sql = "UPDATE tb_produtos SET qtd = {$qtd} WHERE id = {$id}";
+
+        $this->conexao->exec($sql);
+    }
+
 }
